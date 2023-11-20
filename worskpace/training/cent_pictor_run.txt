@@ -1,0 +1,16 @@
+# Training
+python model_main_tf2.py --model_dir=models/centernet_resnet50_v1_fpn_pictor --pipeline_config_path=models/centernet_resnet50_v1_fpn_pictor/pipeline.config
+
+# Testing
+python model_main_tf2.py --model_dir=models/centernet_resnet50_v1_fpn_pictor --pipeline_config_path=models/centernet_resnet50_v1_fpn_pictor/pipeline.config --checkpoint_dir=models/centernet_resnet50_v1_fpn_pictor
+
+# Tensorboard
+tensorboard --logdir=models/centernet_resnet50_v1_fpn_pictor
+
+# Export model
+python ./exporter_main_v2.py --input_type image_tensor --pipeline_config_path ./models/centernet_resnet50_v1_fpn_pictor/pipeline.config --trained_checkpoint_dir ./models/centernet_resnet50_v1_fpn_pictor/ --output_directory ./exported-models/centernet_model_pictor
+
+# Predict with model
+python predict_main_pictor.py
+
+# Models - ssd_resnet50_v1_fpn_pictor, faster_rcnn_resnet50_v1_pictor, centernet_resnet50_v1_fpn_pictor
